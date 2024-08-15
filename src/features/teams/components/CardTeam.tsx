@@ -4,8 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
-// import { checkAmountIsPlural } from '../../../utils/helpers';
 import { TeamType } from '../types/typesTeams';
+// import { checkAmountIsPlural } from '../../../utils/helpers';
 
 type CardTeamPropType = {
     team: TeamType;

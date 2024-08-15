@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import { teamsTEST } from '../../../utils/testData';
 import TeamList from '../../../features/teams/screens/TeamList';
+import { teamsTEST } from '../../../utils/dataTeams';
 
 const TeamsTab = (): JSX.Element => {
     return (

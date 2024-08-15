@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import { eventsTEST } from '../../../utils/testData';
 import EventList from '../../../features/events/screens/EventList';
+import { eventsTEST } from 'src/utils/dataEvents';
 
 const EventsTab = (): JSX.Element => {
     return (

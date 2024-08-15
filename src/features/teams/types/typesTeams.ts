@@ -1,5 +1,5 @@
-import { EventType } from '../../../features/events/types/typesEvents';
-import { UserType } from '../../../features/users/types/typesUsers';
+import { EventType } from '../../events/types/typesEvents';
+import { UserType } from '../../users/types/typesUsers';
 
 //https://www.youtube.com/watch?v=xsfdypZCLQ8
 
@@ -8,10 +8,10 @@ export type TeamsShareType = {
     members: boolean;
 };
 
-export type TeamKitColorType = { id: number; color: string; type: 'HOME' | 'AWAY' | 'THIRD' };
+export type KitColorType = { id: number; color: string; type: 'HOME' | 'AWAY' | 'THIRD' };
 
 export type KitColorsType = {
-    [key: string]: TeamKitColorType;
+    [key: string]: KitColorType;
 };
 
 export type TeamSportType = {
@@ -20,9 +20,9 @@ export type TeamSportType = {
 };
 
 export type TeamType = {
-    id: string;
+    id: null | number;
     code: string;
-    team_owner_id: number;
+    team_owner_id: null | number;
     team_owner: string;
     name: string;
     sport: string;
@@ -30,9 +30,9 @@ export type TeamType = {
     max_members: number;
     open_to_public: boolean;
     open_to_guests: boolean;
-    kit_color_list: TeamKitColorType[];
+    kit_color_list?: KitColorType[];
     uri: string;
     member_list: UserType[];
     event_list: EventType[];
-    createdAt: string;
+    created_at: string;
 };

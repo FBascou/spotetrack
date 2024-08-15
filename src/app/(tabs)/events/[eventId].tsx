@@ -1,10 +1,10 @@
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { eventsTEST } from '../../../utils/testData';
 import { Stack } from 'expo-router';
 import Participants from '../../../features/events/components/Participants';
 import Typographies from '../../../constants/Typographies';
 import { EventType } from '../../../features/events/types/typesEvents';
+import { eventsTEST } from '../../../utils/dataEvents';
 
 const EventScreen = () => {
     const { eventId } = useLocalSearchParams();
@@ -44,10 +44,10 @@ const EventScreen = () => {
                 </View>
             </View>
             <Participants event={event} />
-            {event.players.map((player) => (
+            {event.player_list.map((player) => (
                 <Text key={player.id}>
-                    {player.member.firstName}
-                    {player.member.lastName}
+                    {player.member.first_name}
+                    {player.member.last_name}
                 </Text>
             ))}
         </ScrollView>

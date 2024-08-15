@@ -1,9 +1,10 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen, Stack, Redirect } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import useAuthStore from '../features/auth/stores/useAuthStore';
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -48,10 +49,11 @@ function RootLayoutNav(): JSX.Element {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack>
-                {/* <Stack.Screen name="(auth)" options={{ headerShown: false }} /> */}
+                {/* <Stack.Screen name="(auth)/index" options={{ headerShown: false }} /> */}
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="createteam" options={{ title: 'Create Team' }} />
                 <Stack.Screen name="jointeam" options={{ title: 'Join Team' }} />
+                <Stack.Screen name="login" options={{ title: 'Login' }} />
                 {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
             </Stack>
         </ThemeProvider>

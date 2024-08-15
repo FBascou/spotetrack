@@ -1,4 +1,4 @@
-import { UserType } from 'src/features/users/types/typesUsers';
+import { UserType } from '../../../features/users/types/typesUsers';
 
 //https://www.youtube.com/watch?v=xsfdypZCLQ8
 
@@ -16,8 +16,8 @@ export type EventPlayerType = {
 };
 
 export type EventType = {
-    id: string;
-    team_id: string;
+    id: number;
+    team_id: number;
     team_name: string;
     name: string;
     description?: string;
@@ -28,16 +28,16 @@ export type EventType = {
     players_per_team: number;
     open_to_guests: boolean;
     price: number;
-    kit_color_1: string;
-    kit_color_2: string;
-    kit_color_3: string;
+    kit_color_1?: string;
+    kit_color_2?: string;
+    kit_color_3?: string;
     status: 'PENDING' | 'CANCELLED' | 'CONFIRMED' | 'ENDED';
     participants_yes: number;
     participants_maybe: number;
     participants_no: number;
     player_list: EventPlayerType[];
     uri: string;
-    createdAt: string;
+    created_at: string;
 };
 
 export type CardEventListType = {

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
-import { EventType } from '../../../features/events/types/typesEvents';
+import { EventType } from '../types/typesEvents';
 import Participants from './Participants';
 
 type CardEventLargePropType = {

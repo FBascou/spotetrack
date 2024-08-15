@@ -3,10 +3,10 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
 import { checkAmountIsPlural } from '../../../utils/helpers';
-import { teamsTEST } from '../../../utils/testData';
-import { TeamsType } from '../types/typesTeams';
-import Teams from './TeamList';
+import TeamList from './TeamList';
 import FormJoinTeam from '../components/FormJoinTeam';
+import { teamsTEST } from 'src/utils/dataTeams';
+import { TeamType } from '../types/typesTeams';
 
 type TabType = {
     id: number;
@@ -26,7 +26,7 @@ const JoinTeam = () => {
     const [tabs, setTabs] = useState<TabType[]>(tabsDefaultValues);
     const [placeholder, setPlaceholder] = useState(tabsDefaultValues[0]?.placeholder);
     const [searchInput, setSearchInput] = useState<string>(searchInputDefaultValues);
-    const [teams, setTeams] = useState<TeamsType[]>([]);
+    const [teams, setTeams] = useState<TeamType[]>([]);
 
     const handleTabPress = (tabItem: TabType) => {
         const updatedTabs = tabs.map((tab) => {
@@ -74,7 +74,7 @@ const JoinTeam = () => {
                 <Text style={styles.teamsFound}>
                     {checkAmountIsPlural(teams.length, 'team')} found
                 </Text>
-                <Teams teams={teams} />
+                <TeamList teamList={teams} />
             </View>
         </ScrollView>
     );

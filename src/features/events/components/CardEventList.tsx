@@ -1,6 +1,6 @@
 // import { Link } from 'expo-router';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
-import { CardEventListType } from '@/features/events/types/typesEvents';
+import { CardEventListType } from '../../../features/events/types/typesEvents';
 import CardEventSmall from './CardEventSmall';
 import CardEventLarge from './CardEventLarge';
 import Typographies from '../../../constants/Typographies';

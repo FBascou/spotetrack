@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
 import Typographies from '../constants/Typographies';
-import { teamTEST1 } from '../utils/testData';
 import { KitColorType } from '../features/teams/types/typesTeams';
 
 type KitColorsPropType = {
@@ -15,7 +14,7 @@ const KitColors = ({ kitColors }: KitColorsPropType) => {
                 <Text style={styles.groupText}>No kits available</Text>
             ) : (
                 <View style={styles.groupKits}>
-                    {teamTEST1.kit_colors.map((kit) => (
+                    {kitColors.map((kit) => (
                         <View
                             key={kit.id}
                             style={[styles.groupKit, { backgroundColor: kit.color }]}></View>

@@ -1,30 +1,30 @@
 import { create } from 'zustand';
-import { TeamsType } from '../types/typesTeams';
-import { teamsTEST } from '../../../utils/testData';
+import { TeamType } from '../types/typesTeams';
+import { teamsTEST } from '../../../utils/dataTeams';
 
 type UseTeamsStoreType = {
-    teams: TeamsType[];
-    team: TeamsType;
-    addTeam: (team: TeamsType) => void;
-    removeTeam: (team: TeamsType) => void;
+    teams: TeamType[];
+    team: TeamType;
+    addTeam: (team: TeamType) => void;
+    removeTeam: (team: TeamType) => void;
 };
 
-const teamsInitialValues: TeamsType = {
-    id: '',
+const teamsInitialValues: TeamType = {
+    id: null,
     code: '',
-    team_creator_id: '',
-    team_creator: '',
+    team_owner_id: null,
+    team_owner: '',
     name: '',
     sport: '',
     type: '',
     max_members: 0,
     open_to_public: false,
     open_to_guests: false,
-    kit_colors: [],
+    kit_color_list: [],
     uri: '',
-    members: [],
-    events: [],
-    createdAt: ''
+    member_list: [],
+    event_list: [],
+    created_at: ''
 };
 
 const useTeamsStore = create<UseTeamsStoreType>()((set) => ({

@@ -1,34 +1,34 @@
 import { create } from 'zustand';
-import { TeamsType } from '../types/typesTeams';
-import { UsersType } from '../../users/types/typesUsers';
-import { EventsType } from '../../events/types/typesEvents';
+import { TeamType } from '../types/typesTeams';
+import { UserType } from '../../users/types/typesUsers';
+import { EventType } from '../../events/types/typesEvents';
 // import { apiSearch } from 'src/features/users/apis/apis';
 
 type UseTeamStoreType = {
-    team: TeamsType;
-    members: UsersType[];
-    events: EventsType[];
-    addMember: (member: UsersType) => void;
-    removeMember: (member: UsersType) => void;
-    addEvent: (event: EventsType) => void;
-    removeEvent: (event: EventsType) => void;
+    team: TeamType;
+    members: UserType[];
+    events: EventType[];
+    addMember: (member: UserType) => void;
+    removeMember: (member: UserType) => void;
+    addEvent: (event: EventType) => void;
+    removeEvent: (event: EventType) => void;
 };
 
-const teamsInitialValues: TeamsType = {
+const teamsInitialValues: TeamType = {
     id: '',
     code: '',
-    team_creator_id: '',
-    team_creator: '',
+    team_owner_id: null,
+    team_owner: '',
     name: '',
     sport: '',
     type: '',
     max_members: 0,
     open_to_public: false,
     open_to_guests: false,
-    kit_colors: [],
+    kit_color_list: [],
     uri: '',
-    members: [],
-    events: [],
+    member_list: [],
+    event_list: [],
     createdAt: ''
 };
 
@@ -40,14 +40,14 @@ const useTeamsStore = create<UseTeamStoreType>()((set) => ({
         set((state) => ({
             members: {
                 ...state.members,
-                members: [...state.team.members, member]
+                members: [...state.team.member_list, member]
             }
         })),
     removeMember: (member) =>
         set((state) => ({
             members: {
                 ...state.members,
-                members: state.team.members.filter((i) => i.id !== member.id)
+                members: state.team.member_list.filter((i) => i.id !== member.id)
             }
         })),
     addEvent: (event) =>

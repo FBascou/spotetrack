@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
-import { TeamType } from '../types/typesTeams';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import useTeamsStore from '../stores/useTeamsStore';
 import { router } from 'expo-router';
+import { TeamType } from '../types/typesTeams';
 
 const sportList = [
     { id: 0, name: 'Any' },
@@ -79,7 +79,6 @@ type FormCreateAccountType = z.infer<typeof FormEditTeamSchema>;
 
 const FormEditTeam = () => {
     const { addTeam } = useTeamsStore();
-    const isTeamOwner = true;
 
     const formEditTeamDefaultValues: FormCreateAccountType = {
         name: '',
@@ -105,7 +104,7 @@ const FormEditTeam = () => {
         let team: TeamType = {
             ...data,
             max_members: intMaxMembers,
-            id: '12313',
+            id: 123543,
             kit_color_list: [],
             uri: 'asdasdqweqwewqdsad',
             team_owner_id: 123,
@@ -113,7 +112,7 @@ const FormEditTeam = () => {
             member_list: [],
             event_list: [],
             code: 'daD!@#dsd',
-            createdAt: '12.05.1235'
+            created_at: '12.05.1235'
         };
 
         if (isNanMaxMembers) {

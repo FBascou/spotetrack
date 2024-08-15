@@ -10,17 +10,16 @@ import Typographies from '../../../constants/Typographies';
 import Events from '../../../features/events/screens/EventList';
 import { EventType } from '../../../features/events/types/typesEvents';
 import { checkAmountIsPlural } from '../../../utils/helpers';
-// import KitColors from '../../../components/KitColors';
 import Members from '../../../features/teams/components/Members';
 import useTeamsStore from '../../../features/teams/stores/useTeamsStore';
-import { user1TEST } from '../../../utils/testData';
-import { TeamType } from '../../../features/teams/types/typesTeams';
+import { TeamType } from 'src/features/teams/types/typesTeams';
+import { user1TEST } from 'src/utils/dataUsers';
 
 const TeamScreen = () => {
     const navigation = useNavigation();
     const { teamId } = useLocalSearchParams();
     const { teams } = useTeamsStore();
-    const team: TeamType = teams.find((team) => team.id === teamId);
+    const team: TeamType = teams?.find((team) => team.id === teamId);
     const isTeamOwner: boolean = true;
 
     // Pressable? Link hierarchy? Styles?
@@ -40,7 +39,7 @@ const TeamScreen = () => {
         });
     }, [navigation]);
 
-    if (user1TEST.teams === null || user1TEST.teams === undefined) {
+    if (user1TEST.team_list === null || user1TEST.team_list === undefined) {
         return <Text>Team not found</Text>;
     }
 
@@ -48,7 +47,7 @@ const TeamScreen = () => {
         return <Text>Team not found</Text>;
     }
 
-    const hasUserJoined = user1TEST.teams.some((item) => item.id === Number(team.id));
+    const hasUserJoined = user1TEST.team_list.some((item) => item.id === Number(team.id));
     const [toggleJoinTeam, setToggleJoinTeam] = useState<boolean>(hasUserJoined);
     const upcomingEvents: EventType[] = team.event_list.filter(
         (event) => event.status !== 'CANCELLED' && event.status !== 'ENDED'
@@ -117,7 +116,7 @@ const TeamScreen = () => {
             </View>
             <View style={styles.group}>
                 <Text style={styles.groupTitle}>Events ({team.event_list.length})</Text>
-                <Events size="S" eventList={team.event_list} toggleJoinTeam={toggleJoinTeam} />
+                <Events size="S" event_list={team.event_list} toggle_join_team={toggleJoinTeam} />
             </View>
             <View style={styles.group}>
                 <Text style={styles.groupTitle}>Members ({team.member_list.length})</Text>

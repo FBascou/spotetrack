@@ -47,6 +47,7 @@ const FormJoinTeam = ({
                         style={styles.formInputText}
                         onChangeText={(input) => handleSearchInputChange(input)}
                         defaultValue={searchInput}
+                        keyboardType="default"
                     />
                 </View>
                 <TouchableOpacity style={styles.formButton} onPress={onSearchTeamPress}>

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
-import { TeamsType } from '../types/typesTeams';
+import { TeamType } from '../types/typesTeams';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -111,18 +111,18 @@ const FormCreateTeam = () => {
     const onSubmitPress: SubmitHandler<FormCreateAccountType> = (data) => {
         const intMaxMembers: number = parseInt(data.max_members);
         const isNanMaxMembers = isNaN(intMaxMembers);
-        let team: TeamsType = {
+        let team: TeamType = {
             ...data,
             max_members: intMaxMembers,
-            id: '12313',
-            kit_colors: [],
+            id: 123543,
+            kit_color_list: [],
             uri: 'asdasdqweqwewqdsad',
             team_owner_id: 123,
             team_owner: 'John Smith',
-            members: [],
-            events: [],
+            member_list: [],
+            event_list: [],
             code: 'daD!@#dsd',
-            createdAt: '12.05.1235'
+            created_at: '12.05.1235'
         };
 
         if (isNanMaxMembers) {
