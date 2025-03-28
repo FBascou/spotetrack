@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import TeamList from '../../../features/teams/screens/TeamList';
-import { teamsTEST } from '../../../utils/dataTeams';
+import { userMainTEST } from '../../../utils/data';
 
 const TeamsTab = (): JSX.Element => {
     return (
         <View style={styles.container}>
-            <TeamList teamList={teamsTEST} />
+            <TeamList teamList={userMainTEST.team_list} />
         </View>
     );
 };

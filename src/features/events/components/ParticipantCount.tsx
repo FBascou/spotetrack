@@ -2,13 +2,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Colors from '../../../constants/Colors';
 
-type ParticipantsCountPropType = {
+type ParticipantCountPropType = {
     countYes: number;
     maybe?: number;
     countNo: number;
 };
 
-const ParticipantsCount = ({ countYes, countNo }: ParticipantsCountPropType) => {
+const ParticipantCount = ({ countYes, countNo }: ParticipantCountPropType) => {
     return (
         <View style={styles.container}>
             <View style={styles.group}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ParticipantsCount;
+export default ParticipantCount;

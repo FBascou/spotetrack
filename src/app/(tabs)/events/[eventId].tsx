@@ -1,14 +1,14 @@
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router';
-import Participants from '../../../features/events/components/Participants';
+import Participants from '../../../features/events/components/ParticipantList';
 import Typographies from '../../../constants/Typographies';
 import { EventType } from '../../../features/events/types/typesEvents';
-import { eventsTEST } from '../../../utils/dataEvents';
+import { eventsTEST } from '../../../utils/data';
 
 const EventScreen = () => {
     const { eventId } = useLocalSearchParams();
-    const event: EventType = eventsTEST.find((event) => event.id === eventId);
+    const event: EventType = eventsTEST.find((event) => event.id === Number(eventId));
 
     if (!event) {
         return <Text>Event not found</Text>;

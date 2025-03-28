@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
 import { EventType } from '../types/typesEvents';
-import Participants from './Participants';
+import Participants from './ParticipantList';
 
 type CardEventSmallPropType = {
     event: EventType;

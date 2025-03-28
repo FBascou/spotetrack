@@ -3,17 +3,17 @@ import Colors from '../../../constants/Colors';
 import Typographies from '../../../constants/Typographies';
 import Button from '../../../components/Button';
 
-type ParticipantsButtonsPropType = {
+type ParticipantButtonsPropType = {
     pressYes: boolean;
     pressNo: boolean;
     onJoinEventPress: (choice: string) => void;
 };
 
-const ParticipantsButtons = ({
+const ParticipantButtons = ({
     pressYes,
     pressNo,
     onJoinEventPress
-}: ParticipantsButtonsPropType) => {
+}: ParticipantButtonsPropType) => {
     return (
         <View style={styles.group}>
             {pressYes === true ? null : (
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
     text: Typographies.p
 });
 
-export default ParticipantsButtons;
+export default ParticipantButtons;

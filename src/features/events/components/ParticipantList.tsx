@@ -1,16 +1,16 @@
 import { StyleSheet, View, Text } from 'react-native';
-import ParticipantsCount from './ParticipantsCount';
-import ParticipantsButtons from './ParticipantsButtons';
+import ParticipantCount from './ParticipantCount';
+import ParticipantButtons from './ParticipantButtons';
 import { EventType } from '../types/typesEvents';
 import Typographies from '../../../constants/Typographies';
 import { useState } from 'react';
 import useEventsStore from '../stores/useEventsStore';
 
-type ParticipantsPropType = {
+type ParticipantListPropType = {
     event: EventType;
 };
 
-const Participants = ({ event }: ParticipantsPropType) => {
+const ParticipantList = ({ event }: ParticipantListPropType) => {
     const setParticipation = useEventsStore((state) => state.setParticipation);
     const [pressYes, setPressYes] = useState<boolean>(false);
     const [pressNo, setPressNo] = useState<boolean>(false);
@@ -34,7 +34,7 @@ const Participants = ({ event }: ParticipantsPropType) => {
     return (
         <View style={styles.container}>
             <View style={styles.group}>
-                <ParticipantsCount
+                <ParticipantCount
                     countYes={
                         pressYes === false ? event.participants_yes : event.participants_yes + 1
                     }
@@ -54,7 +54,7 @@ const Participants = ({ event }: ParticipantsPropType) => {
                 {event.status === 'CANCELLED' || event.status === 'ENDED' ? (
                     <Text style={styles.text}>{eventStatusMessage}</Text>
                 ) : (
-                    <ParticipantsButtons
+                    <ParticipantButtons
                         pressYes={pressYes}
                         pressNo={pressNo}
                         onJoinEventPress={onJoinEventPress}
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     text: Typographies.h4Secondary
 });
 
-export default Participants;
+export default ParticipantList;

@@ -10,16 +10,16 @@ import Typographies from '../../../constants/Typographies';
 import Events from '../../../features/events/screens/EventList';
 import { EventType } from '../../../features/events/types/typesEvents';
 import { checkAmountIsPlural } from '../../../utils/helpers';
-import Members from '../../../features/teams/components/Members';
+import MemberList from '../../../features/teams/components/MemberList';
 import useTeamsStore from '../../../features/teams/stores/useTeamsStore';
-import { TeamType } from 'src/features/teams/types/typesTeams';
-import { user1TEST } from 'src/utils/dataUsers';
+import { TeamType } from '../../../features/teams/types/typesTeams';
 
 const TeamScreen = () => {
     const navigation = useNavigation();
     const { teamId } = useLocalSearchParams();
     const { teams } = useTeamsStore();
-    const team: TeamType = teams?.find((team) => team.id === teamId);
+    const team: TeamType = teams?.find((team) => team.id === Number(teamId)) as TeamType;
+
     const isTeamOwner: boolean = true;
 
     // Pressable? Link hierarchy? Styles?
@@ -39,15 +39,16 @@ const TeamScreen = () => {
         });
     }, [navigation]);
 
-    if (user1TEST.team_list === null || user1TEST.team_list === undefined) {
-        return <Text>Team not found</Text>;
-    }
-
     if (!team) {
         return <Text>Team not found</Text>;
     }
 
-    const hasUserJoined = user1TEST.team_list.some((item) => item.id === Number(team.id));
+    // if (user1TEST.team_list === null || user1TEST.team_list === undefined) {
+    //     return <Text>Team not found</Text>;
+    // }
+
+    const hasUserJoined = teams.some((item) => item.id === team.id);
+
     const [toggleJoinTeam, setToggleJoinTeam] = useState<boolean>(hasUserJoined);
     const upcomingEvents: EventType[] = team.event_list.filter(
         (event) => event.status !== 'CANCELLED' && event.status !== 'ENDED'
@@ -56,11 +57,11 @@ const TeamScreen = () => {
     const onJoinTeamPress = () => {
         setToggleJoinTeam((prev) => !prev);
 
-        if (toggleJoinTeam === true) {
-            // add team to user
-        } else {
-            // remove team from user
-        }
+        // if (toggleJoinTeam === true) {
+        //     // add team to user
+        // } else {
+        //     // remove team from user
+        // }
     };
 
     return (
@@ -116,13 +117,13 @@ const TeamScreen = () => {
             </View>
             <View style={styles.group}>
                 <Text style={styles.groupTitle}>Events ({team.event_list.length})</Text>
-                <Events size="S" event_list={team.event_list} toggle_join_team={toggleJoinTeam} />
+                <Events size="S" eventList={team.event_list} toggleJoinTeam={toggleJoinTeam} />
             </View>
             <View style={styles.group}>
-                <Text style={styles.groupTitle}>Members ({team.member_list.length})</Text>
+                <Text style={styles.groupTitle}>Member List ({team.member_list.length})</Text>
                 <View>
                     {!toggleJoinTeam ? (
-                        <Members team={team} />
+                        <MemberList team={team} />
                     ) : (
                         <View>
                             <Text style={styles.groupText}>

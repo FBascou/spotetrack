@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { TeamType } from '../types/typesTeams';
-import { teamsTEST } from '../../../utils/dataTeams';
+import { teamsTEST } from '../../../utils/data';
 
 type UseTeamsStoreType = {
     teams: TeamType[];

@@ -2,19 +2,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import Typographies from '../../../constants/Typographies';
 import { TeamType } from '../types/typesTeams';
 
-type MembersPropType = {
+type MemberListPropType = {
     team: TeamType;
 };
 
 // find another way to see check if the member.id === team_owner.id
-const Members = ({ team }: MembersPropType) => {
+const MemberList = ({ team }: MemberListPropType) => {
     return (
         <View>
             {team.member_list.length === 0 ? (
                 <Text style={styles.text}>No members available</Text>
             ) : (
                 team.member_list
-                    .sort((a, b) => a.lastName.localeCompare(b.lastName))
+                    .sort((a, b) => a.last_name.localeCompare(b.last_name))
                     .map((member) => (
                         <View key={member.id} style={styles.group}>
                             <Text
@@ -28,7 +28,7 @@ const Members = ({ team }: MembersPropType) => {
                                             : 'normal'
                                     }
                                 ]}>
-                                {`${member.lastName} ${member.firstName}`}{' '}
+                                {`${member.last_name} ${member.first_name}`}{' '}
                                 {String(member.id).includes(String(team.team_owner_id))
                                     ? '(Team Owner)'
                                     : ''}
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Members;
+export default MemberList;

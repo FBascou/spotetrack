@@ -15,7 +15,7 @@ type UseTeamStoreType = {
 };
 
 const teamsInitialValues: TeamType = {
-    id: '',
+    id: null,
     code: '',
     team_owner_id: null,
     team_owner: '',
@@ -29,7 +29,7 @@ const teamsInitialValues: TeamType = {
     uri: '',
     member_list: [],
     event_list: [],
-    createdAt: ''
+    created_at: ''
 };
 
 const useTeamsStore = create<UseTeamStoreType>()((set) => ({

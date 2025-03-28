@@ -16,8 +16,8 @@ export type EventPlayerType = {
 };
 
 export type EventType = {
-    id: number;
-    team_id: number;
+    id: null | number;
+    team_id: null | number;
     team_name: string;
     name: string;
     description?: string;

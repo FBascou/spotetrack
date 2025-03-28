@@ -21,8 +21,8 @@ export type UserType = {
     birth_date: string;
     phone: string;
     sport_list: UserSportsType[];
-    team_list?: null | TeamType[];
-    event_list?: null | EventType[];
+    team_list: TeamType[];
+    event_list: EventType[];
     share_contact: UserShareContactType;
     created_at: string;
 };

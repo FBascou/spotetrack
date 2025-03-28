@@ -1,20 +1,20 @@
 import { create } from 'zustand';
-import { EventsPlayersType, EventsType } from '../types/typesEvents';
+import { EventPlayerType, EventType } from '../types/typesEvents';
 // import { apiSearch } from 'src/features/users/apis/apis';
 
 type UseTeamsStoreType = {
-    events: EventsType[];
-    event: EventsType;
-    addEvent: (event: EventsType) => void;
-    removeEvent: (event: EventsType) => void;
-    addPlayer: (player: EventsPlayersType) => void;
-    removePlayer: (player: EventsPlayersType) => void;
-    setParticipation: (event: EventsType) => void;
+    events: EventType[];
+    event: EventType;
+    addEvent: (event: EventType) => void;
+    removeEvent: (event: EventType) => void;
+    addPlayer: (player: EventPlayerType) => void;
+    removePlayer: (player: EventPlayerType) => void;
+    setParticipation: (event: EventType) => void;
 };
 
-const eventsInitialValues: EventsType = {
-    id: '',
-    team_id: '',
+const eventsInitialValues: EventType = {
+    id: null,
+    team_id: null,
     team_name: '',
     name: '',
     description: '',
@@ -32,9 +32,9 @@ const eventsInitialValues: EventsType = {
     participants_yes: 0,
     participants_maybe: 0,
     participants_no: 0,
-    players: [],
+    player_list: [],
     uri: '',
-    createdAt: ''
+    created_at: ''
 };
 
 // setParticipation: when member clicks on Participation button (yes, maybe, no):
@@ -57,14 +57,14 @@ const useSearchStore = create<UseTeamsStoreType>()((set) => ({
         set((state) => ({
             event: {
                 ...state.event,
-                players: [...state.event.players, player]
+                players: [...state.event.player_list, player]
             }
         })),
     removePlayer: (player) =>
         set((state) => ({
             event: {
                 ...state.event,
-                players: state.event.players.filter((i) => i.id !== player.id)
+                players: state.event.player_list.filter((i) => i.id !== player.id)
             }
         })),
     setParticipation: (event) =>

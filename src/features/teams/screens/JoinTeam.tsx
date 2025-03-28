@@ -5,7 +5,7 @@ import Typographies from '../../../constants/Typographies';
 import { checkAmountIsPlural } from '../../../utils/helpers';
 import TeamList from './TeamList';
 import FormJoinTeam from '../components/FormJoinTeam';
-import { teamsTEST } from 'src/utils/dataTeams';
+import { teamsTEST } from '../../../utils/dataTeams';
 import { TeamType } from '../types/typesTeams';
 
 type TabType = {

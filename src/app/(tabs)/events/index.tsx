@@ -1,11 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 import EventList from '../../../features/events/screens/EventList';
-import { eventsTEST } from 'src/utils/dataEvents';
+import { userMainTEST } from '../../../utils/data';
 
 const EventsTab = (): JSX.Element => {
+    // const eventList = userMainTEST.team_list.flatMap((team) => team.event_list);
+
+    // console.error(eventList);
+
     return (
         <View style={styles.container}>
-            <EventList size={'L'} eventList={eventsTEST} toggleJoinTeam={false} />
+            <EventList size={'L'} eventList={userMainTEST.event_list} toggleJoinTeam={false} />
         </View>
     );
 };
